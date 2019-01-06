@@ -22,8 +22,12 @@
     <div>
       <strong>Menu:</strong>
       <ul>
+        {% if request.get_full_path != '/home/'%}
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% endif %}
         {% if user.is_authenticated %}
         <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
         <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
         {% else %}
         <li><a href="{% url 'account_login' %}">Sign In</a></li>
